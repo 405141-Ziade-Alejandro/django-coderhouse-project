@@ -45,11 +45,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Insumos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Work Stations</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'add_insumo' %}">Insumos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'add_user' %}">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'add_ws' %}">Work Stations</a></li>
                 <li class="nav-item ms-lg-3">
-                    <a class="btn btn-outline-info btn-sm" href="#">🔍 Buscar</a>
+                    <a class="btn btn-outline-info btn-sm" href="{% url 'query_insumo' %}">🔍 Buscar</a>
                 </li>
             </ul>
         </div>

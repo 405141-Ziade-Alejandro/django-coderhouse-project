@@ -1,0 +1,29 @@
+{% extends 'it_inventory/index.html' %}
+
+{% block content %}
+<div class="card p-4 border-info">
+    <h2 class="text-info">Buscar Insumos</h2>
+
+    <form method="GET" action="{% url 'query_insumo' %}" class="mb-4">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </form>
+
+    <hr class="border-secondary">
+
+    {% if query %}
+        <h4 class="mb-3">Resultados para: "{{ query }}"</h4>
+        {% if results %}
+            <ul class="list-group">
+                {% for item in results %}
+                    <li class="list-group-item bg-dark text-white border-secondary">
+                        <strong>{{ item.name }}</strong> - {{ item.category }} (Stock: {{ item.amount }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-warning">No se encontraron insumos con ese nombre.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
