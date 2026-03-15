@@ -1,17 +1,17 @@
 from django import forms
-from .models import  insumo,user,work_station
+from .models import  Insumo,User,WorkStation
 
 class InsumoForm(forms.ModelForm):
     class Meta:
-        model = insumo
+        model = Insumo
         fields = '__all__'
 class UserForm(forms.ModelForm):
     class Meta:
-        model = user
+        model = User
         fields = '__all__'
 class WorkStationForm(forms.ModelForm):
     class Meta:
-        model = work_station
+        model = WorkStation
         fields = '__all__'
         widgets = {
             'date_received': forms.DateInput(attrs={'type': 'date'}),

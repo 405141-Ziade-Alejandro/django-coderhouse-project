@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from it_inventory.forms import InsumoForm, UserForm, WorkStationForm, QueryInsumoForm
-from it_inventory.models import insumo
+from it_inventory.models import Insumo
 
 
 # Create your views here.
@@ -51,7 +51,7 @@ def query_insumo(request):
     query = request.GET.get('nombre','')
     results = []
     if query:
-        results = insumo.objects.filter(name__icontains=query)
+        results = Insumo.objects.filter(name__icontains=query)
 
     form = QueryInsumoForm()
 
