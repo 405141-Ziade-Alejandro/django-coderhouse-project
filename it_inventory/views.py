@@ -1,14 +1,28 @@
 from django.shortcuts import render, redirect
-
+# render: genera una respuesta HTML usando un template
+# redirect: devuelve una redirección HTTP a otra URL
 from it_inventory.forms import InsumoForm, UserForm, WorkStationForm, QueryInsumoForm
 from it_inventory.models import Insumo
-
+# Importamos los formularios para usarlos en las vistas
+# Importamos el modelo Insumo para poder consultar la base de datos
 
 # Create your views here.
 def home(request):
-    return render(request, 'it_inventory/home.html')
+    """
+    Home page view.
+
+    Receives an HTTP request and returns the home template.
+    """
+    return render(request, 'it_inventory/home.html') # render() genera un HttpResponse con el HTML del template
 
 def add_insumo(request):
+    """
+    View used to create a new Insumo in the database.
+
+    Handles both:
+    - displaying the form (GET request)
+    - processing the submitted form (POST request)
+    """
     if request.method == 'POST':
         form = InsumoForm(request.POST)
         if form.is_valid():
@@ -22,6 +36,13 @@ def add_insumo(request):
         })
 
 def add_user(request):
+    """
+    View used to create a new users in the database.
+
+    Handles both:
+    - displaying the form (GET request)
+    - processing the submitted form (POST request)
+    """
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -35,6 +56,13 @@ def add_user(request):
     })
 
 def add_ws(request):
+    """
+    View used to create a new work stations in the database.
+
+    Handles both:
+    - displaying the form (GET request)
+    - processing the submitted form (POST request)
+    """
     if request.method == 'POST':
         form = WorkStationForm(request.POST)
         if form.is_valid():
@@ -48,6 +76,9 @@ def add_ws(request):
     })
 
 def query_insumo(request):
+    """
+    View used to search Insumo objects by name.
+    """
     query = request.GET.get('nombre','')
     results = []
     if query:
