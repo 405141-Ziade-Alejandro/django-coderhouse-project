@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="card p-4 border-info">
-    <h2 class="text-info">Buscar Insumos</h2>
+    <h2 class="text-info">Buscar {{ subject }}</h2>
 
-    <form method="GET" action="{% url 'query_insumo' %}" class="mb-4">
+    <form method="GET" action="{% url  action_url  %}" class="mb-4">
         {{ form.as_p }}
         <button type="submit" class="btn btn-info">Buscar</button>
     </form>
@@ -17,7 +17,7 @@
             <ul class="list-group">
                 {% for item in results %}
                     <li class="list-group-item bg-dark text-white border-secondary">
-                        <strong>{{ item.name }}</strong> - {{ item.category }} (Stock: {{ item.amount }})
+                        {{ item }}
                     </li>
                 {% endfor %}
             </ul>

@@ -37,3 +37,9 @@ class QueryInsumoForm(forms.Form):
     It only collects input data for a query.
     """
     nombre=forms.CharField(max_length=100,required=False,label='Buscar por nombre')
+
+class QueryUserForm(forms.Form):
+    name=forms.CharField(max_length=100,required=False,label='Buscar por nombre')
+
+class QueryWorkStationForm(forms.Form):
+    ws_number=forms.CharField(max_length=100,required=False,label='Buscar por WS Etiqueta')

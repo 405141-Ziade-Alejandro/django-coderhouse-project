@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 # render: genera una respuesta HTML usando un template
 # redirect: devuelve una redirección HTTP a otra URL
-from it_inventory.forms import InsumoForm, UserForm, WorkStationForm, QueryInsumoForm
-from it_inventory.models import Insumo
+from it_inventory.forms import InsumoForm, UserForm, WorkStationForm, QueryInsumoForm, QueryUserForm, \
+    QueryWorkStationForm
+from it_inventory.models import Insumo, User, WorkStation
+
+
 # Importamos los formularios para usarlos en las vistas
 # Importamos el modelo Insumo para poder consultar la base de datos
 
@@ -90,4 +93,35 @@ def query_insumo(request):
         'form': form,
         'results': results,
         'query': query,
+        'subject': "Insumnos",
+        'action_url': 'query_insumo',
+    })
+
+def query_user(request):
+    query = request.GET.get('name','')
+    results = []
+    if query:
+        results = User.objects.filter(name__icontains=query)
+    form = QueryUserForm()
+
+    return render(request, 'it_inventory/query.html', {
+        'form': form,
+        'results': results,
+        'query': query,
+        'subject': "Users",
+        'action_url': 'query_user',
+    })
+def query_ws(request):
+    query = request.GET.get('ws_number','')
+    results = []
+    if query:
+        results = WorkStation.objects.filter(ws_number__icontains=query)
+    form = QueryWorkStationForm()
+
+    return render(request, 'it_inventory/query.html', {
+        'form': form,
+        'results': results,
+        'query': query,
+        'subject': "Work Stations",
+        'action_url': 'query_ws',
     })

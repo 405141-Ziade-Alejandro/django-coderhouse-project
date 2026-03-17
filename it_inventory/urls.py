@@ -13,5 +13,7 @@ urlpatterns = [
     path('add-insumo/', add_insumo, name='add_insumo'),
     path('add-user/', add_user, name='add_user'),
     path('add-ws/', add_ws, name='add_ws'),
-    path('query/', query_insumo, name='query_insumo'),
+    path('query-insumo/', query_insumo, name='query_insumo'),
+    path('query-user/', query_user, name='query_user'),
+    path('query-ws/', query_ws, name='query_ws'),
 ]

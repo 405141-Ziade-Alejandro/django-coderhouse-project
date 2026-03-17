@@ -39,7 +39,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark mb-4">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">IT Support DB</a>
+        <a class="navbar-brand fw-bold" href="{% url 'home' %}">IT Support DB</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,8 +48,28 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'add_insumo' %}">Insumos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'add_user' %}">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'add_ws' %}">Work Stations</a></li>
-                <li class="nav-item ms-lg-3">
-                    <a class="btn btn-outline-info btn-sm" href="{% url 'query_insumo' %}">🔍 Buscar</a>
+                <li class="nav-item dropdown ms-lg-3">
+                    <a class="btn btn-outline-info btn-sm dropdown-toggle" href="#" role="button"
+                       data-bs-toggle="dropdown">
+                        🔍 Buscar
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'query_insumo' %}">
+                                Insumos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'query_user' %}">
+                                Usuarios
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'query_ws' %}">
+                                WorkStations
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
