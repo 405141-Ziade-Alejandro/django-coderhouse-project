@@ -1,29 +1,29 @@
 {% extends 'it_inventory/index.html' %}
 
 {% block content %}
-<div class="card p-4 border-info">
-    <h2 class="text-info">Buscar {{ subject }}</h2>
+    <div class="card p-4 border-info">
+        <h2 class="text-info">Buscar {{ subject }}</h2>
+        {#this action url action_url redirects the page to that url, it use the same url to bring the results of the query up#}
+        <form method="GET" action="{% url  action_url %}" class="mb-4">
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-info">Buscar</button>
+        </form>
 
-    <form method="GET" action="{% url  action_url  %}" class="mb-4">
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-info">Buscar</button>
-    </form>
+        <hr class="border-secondary">
 
-    <hr class="border-secondary">
-
-    {% if query %}
-        <h4 class="mb-3">Resultados para: "{{ query }}"</h4>
-        {% if results %}
-            <ul class="list-group">
-                {% for item in results %}
-                    <li class="list-group-item bg-dark text-white border-secondary">
-                        {{ item }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="text-warning">No se encontraron insumos con ese nombre.</p>
+        {% if query %}
+            <h4 class="mb-3">Resultados para: "{{ query }}"</h4>
+            {% if results %}
+                <ul class="list-group">
+                    {% for item in results %}
+                        <li class="list-group-item bg-dark text-white border-secondary">
+                            {{ item }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-warning">No se encontraron insumos con ese nombre.</p>
+            {% endif %}
         {% endif %}
-    {% endif %}
-</div>
+    </div>
 {% endblock %}

@@ -89,6 +89,10 @@ def query_insumo(request):
 
     form = QueryInsumoForm()
 
+    """
+    this thing called context down there is what it is send 
+    to the template and it is used there to get the values put here
+    """
     return render(request, 'it_inventory/query.html', {
         'form': form,
         'results': results,
@@ -98,9 +102,10 @@ def query_insumo(request):
     })
 
 def query_user(request):
-    query = request.GET.get('name','')
+    query = request.GET.get('name','') # the request.get.get is a check if the user actually typed something, then saves what he typed into query
+
     results = []
-    if query:
+    if query: # if the request actually got something then it ask the databese, if the name field contain the query, then it saves the filter array into results
         results = User.objects.filter(name__icontains=query)
     form = QueryUserForm()
 
